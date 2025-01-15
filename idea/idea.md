@@ -33,6 +33,7 @@
 
 ## The Idea Replicator
 
+The id
 Replicator is a comprehensive Windows configuration tool designed to simplify computer setup, application installation, and system optimization for non-technical users. The application provides a user-friendly interface that supports multiple package managers (winget, pip, cargo, NuGet), allows for easy debloating of Windows, creates customizable configuration profiles, and automates the process of installing applications and system tweaks across different use cases like gaming, programming, and general productivity.
 
 ## Key Features
