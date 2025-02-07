@@ -1,6 +1,12 @@
-class ui:
+from typing import Callable, Dict
+from logger import Logger
+from pathlib import Path
+import sys
+
+logger = Logger(Path("./presets"))
+class UI:
     def __init__(self):
-        self.baner = """
+        self.banner = """
   _____            _ _           _             
  |  __ \          | (_)         | |            
  | |__) |___ _ __ | |_  ___ __ _| |_ ___  _ __ 
@@ -10,65 +16,70 @@ class ui:
             | |                                
             |_|                                
 """
+        self.selected_option: int = 0
+        self._running: bool = True
+        
+    OPTIONS: Dict[int, tuple[str, str]] = {
+        1: ("Basic", "The basic tweaks for best performance"),
+        2: ("Gaming", "Has everything you need already installed"),
+        3: ("Student", "Has everything you need already installed for studying"),
+        4: ("Professional", "Has everything you need already installed for work"),
+        5: ("Custom", "Create and customize your own setup")
+    }
 
-    def print_baner(self) -> None:
-        print(self.baner)
+    def print_banner(self) -> None:
+        print(self.banner)
         
-    def print_error_no_entered(self) -> None:
-        input("Error: No entered value")
-        exit()
+    def exit_with_error(self, message: str) -> None:
+        input(f"Error: {message}. Press Enter to exit...")
+        logger.log_error(message)
+        sys.exit(1)
         
-    def print_error(self, error:str) -> None:
-        input(f"Error: {error}")
-        exit()
+    def print_error(self, error: str) -> None:
+        print(f"Error: {error}")
+        logger.log_error(error)
         
-    def print_opson_1(self, info:bool = False) -> None:
-        print("[1] Basic")
-        if info:
-            print("The basic twicks for best performance")
-        
-    def print_opson_2(self, info:bool = False) -> None:
-        print("[2] Gaming")
-        if info:
-            print("Hes evrything you need allready installed")
-            
-    def print_opson_3(self, info:bool = False) -> None:
-        print("[3] Student")
-        if info:
-            print("Hes evrything you need allready installed for studing")
-            
-    def print_opson_4(self, info:bool = False) -> None:
-        print("[4] Profesional")
-        if info:
-            print("Hes evrything you need allready installed for work")
-            
-    def print_opson_5(self, info:bool = False) -> None:
-        print("[5] Custom")
-        if info:
-            print("Creat and castomize your own setup")
-            
-            
+    def display_option(self, option_num: int, show_info: bool = False) -> None:
+        if option_num in self.OPTIONS:
+            name, description = self.OPTIONS[option_num]
+            print(f"[{option_num}] {name}")
+            if show_info:
+                print(description)
+
+    def get_selected_option(self) -> int:
+        return self.selected_option
+
     def run(self) -> int:
-        opsins = {
-            1: self.print_opson_1,
-            2: self.print_opson_2,
-            3: self.print_opson_3,
-            4: self.print_opson_4,
-            5: self.print_opson_5
-        }
-        
-        while(True):
-            self.print_baner()
+        while self._running:
+            self.print_banner()
+            
+            # Display all options
             for i in range(1, 6):
-                opsins[i](False)
-            print("Select your opson:")
+                self.display_option(i)
+                
+            print("\nSelect your option (0 to exit):")
             try:
-                opson = int(input(">>> "))
-                if opson in range(1, 6):
-                    opsins[opson](True)
-                    if input("Do you want to continue? (y/n): ") == "y":
-                        return opson
-                else:
-                    print("Invalid opson")
-            except:
-                print("Invalid opson")
+                option = int(input(">>> ").strip())
+                
+                if option == 0:
+                    print("Goodbye!")
+                    sys.exit(0)
+                    
+                if option not in self.OPTIONS:
+                    self.print_error("Invalid option")
+                    continue
+                    
+                # Show detailed info for selected option
+                self.display_option(option, show_info=True)
+                
+                if input("Do you want to continue? (y/n): ").lower().strip() == "y":
+                    self.selected_option = option
+                    return option
+                    
+            except ValueError:
+                self.exit_with_error("Invalid input - please enter a number")
+            except KeyboardInterrupt:
+                print("\nGoodbye!")
+                sys.exit(0)
+                
+        return 0    

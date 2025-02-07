@@ -1,21 +1,22 @@
 from ui import *
 from app import *
+from pathlib import Path
 
 def main() -> None:
-    UI = ui()
-    app = App()
+    ui = UI()
+    app = App(Path("./presets"))
     opsins = {
-        1: ui.print_opson_1,
-        2: ui.print_opson_2,
-        3: ui.print_opson_3,
-        4: ui.print_opson_4,
-        5: ui.print_opson_5
+        1: 'Basic.json',
+        2: 'Gaming.json',
+        3: 'Structent.json',
+        4: 'Profesional.json',
+        5: 'Custom.json'
     }
-
     for opsin in opsins:
-        if UI.run() in opsins:
-            opsins[opsin](True)
-            break
+        if ui.run() in opsins:
+            app.run_preset(opsins[opsin])
+            
          
 if __name__ == "__main__":
     main()
+ 
