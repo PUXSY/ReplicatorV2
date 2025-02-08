@@ -14,7 +14,7 @@ def main() -> None:
     }
     for opsin in opsins:
         if ui.run() in opsins:
-            app.run_preset(opsins[opsin])
+            app.run_preset_test(opsins[opsin])
             
          
 if __name__ == "__main__":
