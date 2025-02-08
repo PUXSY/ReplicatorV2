@@ -5,8 +5,8 @@ from pathlib import Path
 
 log = Logger()
 class App:
-    def __init__(self, struct_path_dir:Path) -> None:
-        self.preset_path_dir: Path = struct_path_dir
+    def __init__(self, presets_path_dir:Path) -> None:
+        self.preset_path_dir: Path = presets_path_dir
         self.list_of_presets: list = self.Get_presets_list()
     
     def __enter__(self):
@@ -58,7 +58,7 @@ class App:
                 print(f"Error: Preset '{preset_name}' not found in the list of presets.")
                 return None
             
-            os.system('iex "& { $(irm https://christitus.com/win) } ' + f'-Config ["{Path(self.preset_path_dir, preset_name)}"] -Run"')
+            os.system(f'iex "& {{ $(irm https://christitus.com/win) }} -Config [\'{Path(self.preset_path_dir, preset_name)}\'] -Run"')
         except FileNotFoundError:
             log.log_error(f"Error: File '{self.preset_path_dir}' not found.")
             return None

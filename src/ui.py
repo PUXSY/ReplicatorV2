@@ -3,7 +3,7 @@ from logger import Logger
 from pathlib import Path
 import sys
 
-logger = Logger(Path("./presets"))
+logger = Logger(Path("./logs"))
 class UI:
     def __init__(self):
         self.banner = """
