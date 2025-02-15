@@ -1,11 +1,13 @@
 import os
-from logger import Logger
+from logger import logger
 import json
+import subprocess
 from pathlib import Path
+from debloat_windows import *
 
-log = Logger()
+log = logger()
 class App:
-    def __init__(self, presets_path_dir:Path) -> None:
+    def __init__(self, presets_path_dir:Path = Path("./../presets")) -> None:
         self.preset_path_dir: Path = presets_path_dir
         self.list_of_presets: list = self.Get_presets_list()
     
@@ -43,22 +45,34 @@ class App:
                     preset_data = json.load(file)
                     print(preset_data)
                     
-                print('iex "& { $(irm https://christitus.com/win) } ' + f'-Config ["{Path(self.preset_path_dir, preset_name)}"] -Run"')
-            else:
-                log.log_error(f"Error: Preset '{preset_name}' not found in the list of presets.")
-                return None
+            with open(os.path.join(self.preset_path_dir, preset_name), 'r') as file:
+                    preset_data = json.load(file)
+                    print(preset_data)
+
         except FileNotFoundError:
             log.log_error(f"Error: File '{self.preset_path_dir}' not found.")
             return None
         
     def run_preset(self, preset_name:str ) -> None:
         try:
+            apply_registry_changes()
+        except:
+            log.log_error("Error: Failed to run debloat_windows.")
+            return None
+        
+        try:
             if not self.presets_in_list(preset_name):
                 log.log_error(f"Error: Preset '{preset_name}' not found in the list of presets.")
                 print(f"Error: Preset '{preset_name}' not found in the list of presets.")
                 return None
+
+                
+            with open(os.path.join(self.preset_path_dir, preset_name), 'r') as file:
+                    preset_data = json.load(file)
+                    print(preset_data)
+
             
-            os.system(f'iex "& {{ $(irm https://christitus.com/win) }} -Config [\'{Path(self.preset_path_dir, preset_name)}\'] -Run"')
+            
         except FileNotFoundError:
             log.log_error(f"Error: File '{self.preset_path_dir}' not found.")
             return None

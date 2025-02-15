@@ -1,72 +1,32 @@
 {
-  "WPFFeature": [
-    "WPFFeatureRegBackup",
-    "WPFFeaturewsl"
-  ],
-  "Install": [
-    {
-      "winget": "EpicGames.EpicGamesLauncher",
-      "choco": "epicgameslauncher"
-    },
-    {
-      "winget": "OBSProject.OBSStudio",
-      "choco": "obs-studio"
-    },
-    {
-      "winget": "Discord.Discord",
-      "choco": "discord"
-    },
-    {
-      "winget": "Valve.Steam",
-      "choco": "steam-client"
-    },
-    {
-      "winget": "ElectronicArts.EADesktop",
-      "choco": "ea-app"
-    },
-    {
-      "winget": "Spotify.Spotify",
-      "choco": "spotify"
-    },
-    {
-      "winget": "Google.Chrome",
-      "choco": "googlechrome"
-    }
-  ],
-  "WPFInstall": [
-    "WPFInstallepicgames",
-    "WPFInstallobs",
-    "WPFInstalldiscord",
-    "WPFInstallsteam",
-    "WPFInstalleaapp",
-    "WPFInstallspotify",
-    "WPFInstallchrome"
-  ],
-  "WPFTweaks": [
-    "WPFTweaksRestorePoint",
-    "WPFTweaksIPv46",
-    "WPFTweaksTele",
-    "WPFTweaksDeleteTempFiles",
-    "WPFTweaksWifi",
-    "WPFTweaksDebloatAdobe",
-    "WPFTweaksConsumerFeatures",
-    "WPFTweaksRecallOff",
-    "WPFTweaksHome",
-    "WPFTweaksPowershell7Tele",
-    "WPFTweaksDVR",
-    "WPFTweaksAH",
-    "WPFTweaksBlockAdobeNet",
-    "WPFTweaksUTC",
-    "WPFTweaksRemoveCopilot",
-    "WPFTweaksRemoveEdge",
-    "WPFTweaksStorage",
-    "WPFTweaksLoc",
-    "WPFTweaksDiskCleanup",
-    "WPFTweaksRazerBlock",
-    "WPFTweaksEdgeDebloat",
-    "WPFTweaksHiber",
-    "WPFTweaksEndTaskOnTaskbar",
-    "WPFTweaksLaptopHibernation",
-    "WPFTweaksServices"
-  ]
+"Install": [
+  {
+    "winget": "EpicGames.EpicGamesLauncher",
+    "choco": "epicgameslauncher"
+  },
+  {
+    "winget": "OBSProject.OBSStudio",
+    "choco": "obs-studio"
+  },
+  {
+    "winget": "Discord.Discord",
+    "choco": "discord"
+  },
+  {
+    "winget": "Valve.Steam",
+    "choco": "steam-client"
+  },
+  {
+    "winget": "ElectronicArts.EADesktop",
+    "choco": "ea-app"
+  },
+  {
+    "winget": "Spotify.Spotify",
+    "choco": "spotify"
+  },
+  {
+    "winget": "Google.Chrome",
+    "choco": "googlechrome"
+  }
+]
 }

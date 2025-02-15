@@ -1,11 +1,4 @@
 {
-  "WPFFeature": [
-    "WPFFeatureRegBackup",
-    "WPFFeatureshyperv",
-    "WPFFeaturesdotnet",
-    "WPFFeaturewsl",
-    "WPFFeatureEnableLegacyRecovery"
-  ],
   "Install": [
     {
       "winget": "Python.Python.3.12",
@@ -35,42 +28,5 @@
       "winget": "Microsoft.VisualStudio.2022.Community",
       "choco": "visualstudio2022community"
     }
-  ],
-  "WPFInstall": [
-    "WPFInstallpython3",
-    "WPFInstalldotnet9",
-    "WPFInstallgit",
-    "WPFInstallspotify",
-    "WPFInstallvscode",
-    "WPFInstallunity",
-    "WPFInstallvisualstudio"
-  ],
-  "WPFTweaks": [
-    "WPFTweaksRestorePoint",
-    "WPFTweaksIPv46",
-    "WPFTweaksTele",
-    "WPFTweaksDeleteTempFiles",
-    "WPFTweaksWifi",
-    "WPFTweaksDebloatAdobe",
-    "WPFTweaksConsumerFeatures",
-    "WPFTweaksRecallOff",
-    "WPFTweaksHome",
-    "WPFTweaksPowershell7Tele",
-    "WPFTweaksDVR",
-    "WPFTweaksAH",
-    "WPFTweaksBlockAdobeNet",
-    "WPFTweaksUTC",
-    "WPFTweaksRemoveCopilot",
-    "WPFTweaksRemoveEdge",
-    "WPFTweaksStorage",
-    "WPFTweaksLoc",
-    "WPFTweaksPowershell7",
-    "WPFTweaksDiskCleanup",
-    "WPFTweaksRazerBlock",
-    "WPFTweaksEdgeDebloat",
-    "WPFTweaksHiber",
-    "WPFTweaksEndTaskOnTaskbar",
-    "WPFTweaksLaptopHibernation",
-    "WPFTweaksServices"
-  ]
+]
 }

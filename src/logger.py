@@ -3,10 +3,10 @@ from pathlib import Path
 from datetime import datetime
 
 
-class Logger:
+class logger:
     """A class to handle error logging with proper file handling and timestamps."""
     
-    def __init__(self, log_dir: str = "./logs"):
+    def __init__(self, log_dir: str = "./../logs"):
         self.path_to_log_dir = Path(log_dir)
         self._setup_log_directory()
         self.logger_exiset:bool = False
@@ -75,7 +75,7 @@ class Logger:
         except Exception as e:
             print(f"Failed to log error: {e}")
     
-    def log_maseg(self, message: str) -> None:
+    def log_info(self, message: str) -> None:
         """Log a message with timestamp."""
         try:
             if self.logger_exiset:

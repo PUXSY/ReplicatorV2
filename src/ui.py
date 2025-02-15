@@ -1,9 +1,8 @@
 from typing import Callable, Dict
-from logger import Logger
+from logger import logger
 from pathlib import Path
 import sys
 
-logger = Logger(Path("./logs"))
 class UI:
     def __init__(self):
         self.banner = """

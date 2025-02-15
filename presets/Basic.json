@@ -1,40 +1,7 @@
 {
-  "WPFFeature": [
-    "WPFFeatureRegBackup",
-    "WPFFeaturewsl"
-  ],
-  "Install": [
+  "Install": 
     {
       "winget": "Google.Chrome",
       "choco": "googlechrome"
     }
-  ],
-  "WPFInstall": [
-    "WPFInstallchrome"
-  ],
-  "WPFTweaks": [
-    "WPFTweaksRestorePoint",
-    "WPFTweaksIPv46",
-    "WPFTweaksTele",
-    "WPFTweaksDeleteTempFiles",
-    "WPFTweaksWifi",
-    "WPFTweaksDebloatAdobe",
-    "WPFTweaksConsumerFeatures",
-    "WPFTweaksRecallOff",
-    "WPFTweaksHome",
-    "WPFTweaksPowershell7Tele",
-    "WPFTweaksDVR",
-    "WPFTweaksAH",
-    "WPFTweaksBlockAdobeNet",
-    "WPFTweaksRemoveCopilot",
-    "WPFTweaksRemoveEdge",
-    "WPFTweaksStorage",
-    "WPFTweaksLoc",
-    "WPFTweaksDiskCleanup",
-    "WPFTweaksEdgeDebloat",
-    "WPFTweaksHiber",
-    "WPFTweaksEndTaskOnTaskbar",
-    "WPFTweaksLaptopHibernation",
-    "WPFTweaksServices"
-  ]
 }
