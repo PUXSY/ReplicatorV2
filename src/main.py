@@ -1,17 +1,13 @@
-from ui import *
-from app import *
+from PyQt5_UI import run_app, SubWindow
+from app import App
 from pathlib import Path
+from logger import logger
+import ctypes
+import sys
 
-ui = UI()
-app = App(Path("./../presets"))
-opsins = {
-    1: 'Basic.json',
-    2: 'Gaming.json',
-    3: 'Structent.json',
-    4: 'Profesional.json',
-    5: 'Custom.json'
-}
+log = logger()
 
+app = App(Path("./presets")) 
 def is_running_as_admin():
     try:
         return ctypes.windll.shell32.IsUserAnAdmin() != 0
@@ -29,15 +25,18 @@ def restart_as_admin():
     except Exception as e:
         log.log_error(f"Error restarting as admin: {e}")
 
-def main() -> None:
+def main():
     if not is_running_as_admin():
         log.log_info("Program is not running as admin. Restarting with admin rights...")
         restart_as_admin()
-    
-    for opsin in opsins:
-        if ui.run() in opsins:
-            app.run_preset(opsins[opsin])
-         
+        return
+
+    try:
+        exit_code = run_app(app)  
+        sys.exit(exit_code)
+    except Exception as e:
+        log.log_error(f"Application error: {e}")
+        sys.exit(1)
+
 if __name__ == "__main__":
     main()
-    

@@ -36,7 +36,7 @@ class App:
             log.log_error(f"Error: File '{self.preset_path_dir}' not found.")
             return False
     
-    def run_preset_test(self, preset_name:str ) -> None:
+    def run_preset_test(self, preset_name:str ) -> str:
         try:
             if not self.presets_in_list(preset_name):
                 log.log_error(f"Error: Preset '{preset_name}' not found in the list of presets.")
@@ -47,6 +47,7 @@ class App:
             with open(os.path.join(self.preset_path_dir, preset_name), 'r') as file:
                     preset_data = json.load(file)
                     print(preset_data)
+                    return preset_data
             
         except FileNotFoundError:
             log.log_error(f"Error: File '{self.preset_path_dir}' not found.")
@@ -74,3 +75,5 @@ class App:
         except FileNotFoundError:
             log.log_error(f"Error: File '{self.preset_path_dir}' not found.")
             return None
+
+
