@@ -4,6 +4,7 @@ import json
 import subprocess
 from pathlib import Path
 from debloat_windows import *
+from install_app import install_preset
 
 log = logger()
 class App:
@@ -28,10 +29,7 @@ class App:
     
     def presets_in_list(self, preset_name:str ) -> bool:
         try:
-            if preset_name in self.list_of_presets:
-                return True
-            else:
-                return False
+            return preset_name in self.list_of_presets
         except FileNotFoundError:
             log.log_error(f"Error: File '{self.preset_path_dir}' not found.")
             return False
@@ -67,10 +65,11 @@ class App:
                 print(f"Error: Preset '{preset_name}' not found in the list of presets.")
                 return None
 
-                
-            with open(os.path.join(self.preset_path_dir, preset_name), 'r') as file:
-                    preset_data = json.load(file)
-                    print(preset_data)
+            try:
+                install_preset(preset_name)
+            except Exception as e:
+                log.log_error(f"Error installing preset '{preset_name}': {e}")
+                return None
             
         except FileNotFoundError:
             log.log_error(f"Error: File '{self.preset_path_dir}' not found.")
